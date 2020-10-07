@@ -22,18 +22,16 @@ pipeline {
             checkout scm
         }
   }
-   
-    stage('Build Docker Images') {
-
+  
+  stage('Build Docker Images') {
         steps {
             buildDockerImages()
         }
-    }
-    
-    stage('Publish Docker Images') {
-
+  }
+   
+  stage('Publish Docker Images') {
         steps {
             publishDockerImages()
         }
-    }
+  }     
 }

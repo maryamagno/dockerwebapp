@@ -2,10 +2,8 @@ node {
     checkout scm
     
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
-        echo("Building...")        
-        bat "docker build ."
         
-        echo("Tagging...")
+        echo("Building with tag...")
         bat "docker build -t maryamagno/testdockerapp"
         
         echo("Docker Images...")

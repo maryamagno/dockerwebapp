@@ -3,7 +3,7 @@ node {
     
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
         echo("Building...")        
-        bat "docker build https://registry.hub.docker.com"
+        bat "docker build ."
         
         echo("Tagging...")
         bat "docker tag testonly maryamagno/testdockerapp"

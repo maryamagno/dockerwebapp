@@ -12,7 +12,7 @@ node {
         echo("Pushing...")      
         
         bat "docker login docker.io"
-        bat "docker push registry.hub.docker.com/marya/testdockerapp:testonly"
+        bat "docker push ${customImage}"
     }
    
 }

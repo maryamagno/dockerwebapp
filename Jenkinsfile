@@ -1,12 +1,11 @@
-pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+node {
+    checkout scm
+
+    docker.withRegistry('https://registry.hub.docker.com', 'marya-dockerhub-id') {
+
+        def customImage = docker.build("marya/testdockerapp")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
     }
 }

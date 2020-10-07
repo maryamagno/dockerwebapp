@@ -9,7 +9,6 @@ node {
     
     docker.withRegistry(${registry_url}, 'marya-dockerhub-id') {
         echo("Pushing...")      
-        bat "docker login -u maryamagno -p N3tw0rk@123 ${registry_url}"
 
         customImage.push()
     }

@@ -6,14 +6,14 @@ node {
         bat "docker build ."
         
         echo("Tagging...")
-        bat "docker tag testonly maryamagno/testdockerapp"
+        bat "docker build -t maryamagno/testdockerapp"
         
         echo("Docker Images...")
         bat "docker images"
         
         echo("Pushing...")              
         bat "docker login docker.io"
-        bat "docker push maryamagno/testonly"
+        bat "docker push maryamagno/testdockerapp"
         bat "docker login docker.io"
     }
    

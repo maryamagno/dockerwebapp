@@ -12,7 +12,7 @@ node {
         echo("Pushing...")      
         
         bat "docker login docker.io"
-        bat "docker push testonly"
+        bat "docker push marya/testdockerapp:testonly"
     }
    
 }

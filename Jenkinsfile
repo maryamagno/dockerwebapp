@@ -2,8 +2,8 @@ node {
     checkout scm
     
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
-        echo("Building...")
-        def customImage = docker.build("maryamagno/testdockerapp")   
+        echo("Building...")        
+        bat "docker build https://registry.hub.docker.com/maryamagno/testdockerapp"
         
         echo("Tagging...")
         bat "docker tag testonly maryamagno/testdockerapp"

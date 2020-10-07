@@ -10,7 +10,7 @@ node {
         bat "docker images"
         
         echo("Pushing...")      
-        docker.image(customImage).push()
+        customImage.push()
     }
    
 }

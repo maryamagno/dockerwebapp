@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://hub.docker.com/', 'marya-dockerhub-id') {
+    docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
 
         def customImage = docker.build("marya/testdockerapp")
 

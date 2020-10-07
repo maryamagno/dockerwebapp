@@ -3,7 +3,8 @@ node {
     
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
         echo("Building...")
-        def customImage = docker.build("marya/testdockerapp")                
+        def customImage = docker.build("marya/testdockerapp")     
+        sh "docker images"
     }
     
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {

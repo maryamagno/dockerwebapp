@@ -1,37 +1,15 @@
-
-def buildDockerImages() {
-    echo 'Building Docker Images...'
+node {
+    checkout scm
     
-    docker.build("marya/testdockerapp")
-}
-
-def publishDockerImages() {
+    docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
+        echo("Building...")
+        def customImage = docker.build("marya/testdockerapp")     
+        sh "docker images"
+    }
+    
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
         echo("Pushing...")      
 
-        docker.image('https://registry.hub.docker.com/marya/testdockerapp').push()
+        docker.image('https://registry.hub.docker.com/repository/docker/marya/testdockerapp').push()
     }
-}
-
-pipeline {
-
-  agent any
-  stage ('Checkout') {
-        steps {
-            sh 'echo "Checking Out Source Code..."'
-            checkout scm
-        }
-  }
-  
-  stage('Build Docker Images') {
-        steps {
-            buildDockerImages()
-        }
-  }
-   
-  stage('Publish Docker Images') {
-        steps {
-            publishDockerImages()
-        }
-  }     
 }

@@ -10,7 +10,9 @@ node {
         bat "docker images"
         
         echo("Pushing...")      
-        customImage.push()
+        
+        bat "docker login docker.io"
+        bat "docker push testonly"
     }
    
 }

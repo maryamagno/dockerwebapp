@@ -9,6 +9,6 @@ node {
     docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
         echo("Pushing...")      
 
-        customImage.push()
+        docker.image('https://registry.hub.docker.com/marya/testdockerapp').push()
     }
 }

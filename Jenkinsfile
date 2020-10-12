@@ -18,9 +18,8 @@ node {
         }
     }
     stage ('Checkout CD'){
-        bat 'mkdir -p Module2'
-        dir("Module2")
-        {
+        bat 'mkdir Module2'
+        dir("Module2"){
             git branch: "main",
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
@@ -36,5 +35,11 @@ node {
                println(versionInYml)                               
             }            
         }         
+    }
+    
+    stage ('Update'){
+        dir("Module2"){
+            bat "git add ."
+        }
     }
 }

@@ -26,12 +26,7 @@ node {
         }
     }
     stage ('Update CD'){
-        dir("Module2")
-        {
-            echo "1.0.2-abcdefg" > version.yml
-            git add version.yml
-            git commit -m "Altered version via jenkins pipeline"
-            git push
-        }
+        bat 'pwd'
+        
     }
 }

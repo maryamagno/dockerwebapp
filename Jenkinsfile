@@ -27,8 +27,4 @@ node {
             url: 'https://github.com/maryamagno/module2.git'
         }
     }
-    stage ('Update CD'){
-        echo worksapce
-        
-    }
 }

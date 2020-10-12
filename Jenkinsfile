@@ -1,34 +1,35 @@
-node {
-    
-    stage ('Check out') {
-        steps {
-            checkout scm
+pipeline {
+    stages {
+        stage ('Check out') {
+            steps {
+                checkout scm
 
-            docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
+                docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
 
-                echo("Building with tag...")
-                bat "docker build -t maryamagno/myfirstimage ."
+                    echo("Building with tag...")
+                    bat "docker build -t maryamagno/myfirstimage ."
 
-                echo("Docker Images...")
-                bat "docker images"
+                    echo("Docker Images...")
+                    bat "docker images"
 
-                echo("Pushing...")              
-                bat "docker login docker.io"
-                bat "docker push maryamagno/myfirstimage"
-                bat "docker login docker.io"
+                    echo("Pushing...")              
+                    bat "docker login docker.io"
+                    bat "docker push maryamagno/myfirstimage"
+                    bat "docker login docker.io"
+                }
             }
         }
-    }
-   
-    stage ('Update Bitbucket-CD') {
 
-       steps {
-            sh 'mkdir -p Module2'
-            dir("Module2")
-            {
-                git branch: "main",
-                credentialsId: 'marya-github-id',
-                url: 'git@github.com:maryamagno/module2.git'
+        stage ('Update Bitbucket-CD') {
+
+           steps {
+                sh 'mkdir -p Module2'
+                dir("Module2")
+                {
+                    git branch: "main",
+                    credentialsId: 'marya-github-id',
+                    url: 'git@github.com:maryamagno/module2.git'
+                }
             }
         }
     }

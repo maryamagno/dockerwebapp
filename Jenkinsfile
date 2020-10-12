@@ -41,7 +41,7 @@ node {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'marya-github-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
             bat 'git config --global user.email "maryamagno@gmail.com"'
             bat 'git config --global user.name "Marya"'
-            bat('git push https://github.com/maryamagno/module2.git')
+            bat('git push https://github.com/****/module2.git HEAD:main')
         }
     }
     

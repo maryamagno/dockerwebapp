@@ -33,7 +33,7 @@ node {
                def currentVersion = readFile(file: 'version.yml')
                println(currentVersion)
                 
-               def versionToDeploy = "1.0.3-hijklmn"
+               def versionToDeploy = "1.0.4-hijklmn"
                writeFile(file: 'version.yml', text: versionToDeploy)
                 
                def versionInYml = readFile(file: 'version.yml')

@@ -27,5 +27,11 @@ node {
             url: 'https://github.com/maryamagno/module2.git'
         }
         echo workspace
+        
+        bat 'cd Module2'
+        script {
+           def data = readFile(file: 'versioin.yml')
+           println(data)
+        }
     }
 }

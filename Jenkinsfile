@@ -40,8 +40,7 @@ node {
             
             git add version.yml
             git commit -m 'changed version via jenkins pipeline'
-            git push origin main
-            
+           
         }
     }
 }

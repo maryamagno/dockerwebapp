@@ -47,10 +47,15 @@ node {
     
     stage ('Update'){
         dir("Module2-test"){
-            credentialsId: "marya-github-id"
-            git add version.yml
-            git commit -m 'Updated version via Jenkins Pipeline'
-            git push origin main                        
+             withCredentials([string(credentialsId: 'marya-github-id')]) {
+                   // Configure the user
+                   sh 'git config user.email "maryamagno@gmail.com"'
+                   sh 'git config user.name "Marya Magno"'
+                   sh "git remote rm origin"
+                   sh "git remote add origin https://github.com/maryamagno/module2.git"                     
+                   sh "git commit -am 'Commit message'"
+                   sh 'git push origin HEAD:main'
+                }                
         }
     }
 }

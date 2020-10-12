@@ -39,8 +39,7 @@ node {
     
     stage('Push Version Back to Git') {     
         dir("Module2-test"){
-            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'marya-github-id',
-                                usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+           withCredentials([usernamePassword(credentialsId: 'marya-github-id', passwordVariable: 'pass', usernameVariable: 'user')]) {
                 bat 'echo %USERNAME%'
                 bat 'git config --global user.email "maryamagno@gmail.com"'
                 bat 'git config --global user.name "Marya"'

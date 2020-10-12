@@ -37,9 +37,11 @@ node {
         }         
     }
     
-    stage('Push Version Back to Git') {        
-        bat 'git config --global user.email "maryamagno@gmail.com"'
-        bat 'git config --global user.name "Marya"'
-        bat('git push git@github.com:maryamagno/module2.git HEAD:main')       
+    stage('Push Version Back to Git') {      
+        sshagent(['marya-github-id']) {
+            bat 'git config --global user.email "maryamagno@gmail.com"'
+            bat 'git config --global user.name "Marya"'
+            bat('git push git@github.com:maryamagno/module2.git HEAD:main')       
+        }
     }    
 }

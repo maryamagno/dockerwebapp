@@ -25,10 +25,7 @@ node {
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
         }
-        echo workspace
-        
-        bat 'cd Module2'
-        echo pwd()
+      
         dir("Module2"){
             script {
                def currentVersion = readFile(file: 'version.yml')
@@ -38,8 +35,12 @@ node {
                writeFile(file: 'version.yml', text: versionToDeploy)
                 
                def versionInYml = readFile(file: 'version.yml')
-               println(versionInYml)
+               println(versionInYml)                               
             }
+                      
+            bat "git add version.yml"
+            bat "git commit -m 'changed version via jenkins pipeline'"
+            bat "git push origin main"
         }
     }
 }

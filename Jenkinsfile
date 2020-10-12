@@ -30,7 +30,7 @@ node {
         
         bat 'cd Module2'
         script {
-           def data = readFile(file: 'versioin.yml')
+           def data = readFile(file: 'version.yml')
            println(data)
         }
     }

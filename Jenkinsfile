@@ -26,5 +26,6 @@ node {
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
         }
+        echo workspace
     }
 }

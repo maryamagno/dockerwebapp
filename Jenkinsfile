@@ -24,9 +24,7 @@ node {
             git branch: "main",
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
-        }
-      
-        dir("Module2"){
+            
             script {
                def currentVersion = readFile(file: 'version.yml')
                println(currentVersion)
@@ -40,7 +38,6 @@ node {
             
             git add version.yml
             git commit -m 'changed version via jenkins pipeline'
-           
-        }
+        }         
     }
 }

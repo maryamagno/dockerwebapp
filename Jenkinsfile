@@ -39,9 +39,10 @@ node {
     
     stage ('Update'){
         dir("Module2-test"){
-            bat "git add ."
-            bat "git commit -m 'Updated version via Jenkins Pipeline'"
-            bat "git push origin main"
+            credentialsId: "marya-github-id"
+            git add version.yml
+            git commit -m 'Updated version via Jenkins Pipeline'
+            git push origin main                        
         }
     }
 }

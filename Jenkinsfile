@@ -34,10 +34,7 @@ node {
                 
                def versionInYml = readFile(file: 'version.yml')
                println(versionInYml)                               
-            }
-            
-            git add version.yml
-            git commit -m 'changed version via jenkins pipeline'
+            }            
         }         
     }
 }

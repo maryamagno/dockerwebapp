@@ -1,4 +1,6 @@
 node {
+    def workspace = pwd()
+    
     stage ('First'){
         checkout scm
 
@@ -26,7 +28,7 @@ node {
         }
     }
     stage ('Update CD'){
-        bat 'pwd'
+        echo worksapce
         
     }
 }

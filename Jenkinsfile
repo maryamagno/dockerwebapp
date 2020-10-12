@@ -40,7 +40,7 @@ node {
     stage('Push Version Back to Git') {     
         dir("Module2-test"){
            withCredentials([usernamePassword(credentialsId: 'marya-github-id', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                bat 'echo %USERNAME%'
+                bat 'echo %user%'
                 bat 'git config --global user.email "maryamagno@gmail.com"'
                 bat 'git config --global user.name "Marya"'
                 bat('git push git@github.com:maryamagno/module2.git HEAD:main')       

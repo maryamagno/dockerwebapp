@@ -1,37 +1,3 @@
-pipeline {
-    agent any
-    stages {
-        stage ('First'){
-            steps {
-                checkout scm
-
-                docker.withRegistry('https://registry.hub.docker.com/', 'marya-dockerhub-id') {
-
-                    echo("Building with tag...")
-                    bat "docker build -t maryamagno/myfirstimage ."
-
-                    echo("Docker Images...")
-                    bat "docker images"
-
-                    echo("Pushing...")              
-                    bat "docker login docker.io"
-                    bat "docker push maryamagno/myfirstimage"
-                }
-            }        
-            stage ('Checkout CD'){
-                steps {
-
-                }
-            }
-            stage ('Push back version'){
-                steps {
-
-                }
-            }
-        }
-    }
-}
-
 node {
     def workspace = pwd()
     

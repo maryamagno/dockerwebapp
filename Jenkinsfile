@@ -29,9 +29,11 @@ node {
         
         bat 'cd Module2'
         echo pwd()
-        script {
-           def data = readFile(file: 'version.yml')
-           println(data)
+        dir("Module2"){
+            script {
+               def data = readFile(file: 'version.yml')
+               println(data)
+            }
         }
     }
 }

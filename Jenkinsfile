@@ -18,8 +18,8 @@ node {
         }
     }
     stage ('Checkout CD'){
-        bat 'mkdir Module2'
-        dir("Module2"){
+        bat 'mkdir Module2-test'
+        dir("Module2-test"){
             git branch: "main",
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
@@ -38,7 +38,7 @@ node {
     }
     
     stage ('Update'){
-        dir("Module2"){
+        dir("Module2-test"){
             bat "git add ."
             bat "git commit -m 'Updated version via Jenkins Pipeline'"
             bat "git push origin main"

@@ -18,8 +18,7 @@ node {
         }
     }
     stage ('Checkout CD'){
-        bat 'mkdir Module2-test'
-        
+               
         if(!fileExists("/"))
         {
           bat "mkdir Module2-test"

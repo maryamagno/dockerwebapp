@@ -31,11 +31,14 @@ node {
         echo pwd()
         dir("Module2"){
             script {
-               def data = readFile(file: 'version.yml')
-               println(data)
+               def currentVersion = readFile(file: 'version.yml')
+               println(currentVersion)
                 
-               def data = "1.0.2-abcdefg"
-               writeFile(file: 'version.yml', text: data)
+               def versionToDeploy = "1.0.2-abcdefg"
+               writeFile(file: 'version.yml', text: versionToDeploy)
+                
+               def versionInYml = readFile(file: 'version.yml')
+               println(versionInYml)
             }
         }
     }

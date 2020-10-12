@@ -22,7 +22,7 @@ node {
         dir("Module2-test"){
             git branch: "main",
             credentialsId: 'marya-github',
-            url: 'git@github.com:maryamagno/module2.git'
+            url: 'https://github.com/maryamagno/module2.git'
             
             script {
                def currentVersion = readFile(file: 'version.yml')
@@ -43,7 +43,7 @@ node {
                 bat 'echo %user%'
                 bat 'git config --global user.email "maryamagno@gmail.com"'
                 bat 'git config --global user.name "Marya"'
-                bat('git push git@github.com:maryamagno/module2.git HEAD:main')       
+                bat('git push https://github.com/maryamagno/module2.git HEAD:main')       
             }
         }
     }    

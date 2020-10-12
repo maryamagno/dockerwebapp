@@ -15,7 +15,6 @@ node {
             echo("Pushing...")              
             bat "docker login docker.io"
             bat "docker push maryamagno/myfirstimage"
-            bat "docker login docker.io"
         }
     }
     stage ('Checkout CD'){

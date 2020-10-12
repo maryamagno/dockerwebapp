@@ -21,7 +21,7 @@ node {
         bat 'mkdir Module2-test'
         dir("Module2-test"){
             git branch: "main",
-            credentialsId: 'marya-github-id',
+            credentialsId: 'marya-github',
             url: 'git@github.com:maryamagno/module2.git'
             
             script {
@@ -39,7 +39,7 @@ node {
     
     stage('Push Version Back to Git') {     
         dir("Module2-test"){
-           withCredentials([usernamePassword(credentialsId: 'marya-github-id', passwordVariable: 'pass', usernameVariable: 'user')]) {
+           withCredentials([usernamePassword(credentialsId: 'marya-github', passwordVariable: 'pass', usernameVariable: 'user')]) {
                 bat 'echo %user%'
                 bat 'git config --global user.email "maryamagno@gmail.com"'
                 bat 'git config --global user.name "Marya"'

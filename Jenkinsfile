@@ -16,13 +16,22 @@ node {
             bat "docker login docker.io"
         }
     }
-    stage ('Second'){
+    stage ('Checkout CD'){
         bat 'mkdir -p Module2'
         dir("Module2")
         {
             git branch: "main",
             credentialsId: 'marya-github-id',
             url: 'https://github.com/maryamagno/module2.git'
+        }
+    }
+    stage ('Update CD'){
+        dir("Module2")
+        {
+            echo "1.0.2-abcdefg" > version.yml
+            git add version.yml
+            git commit -m "Altered version via jenkins pipeline"
+            git push
         }
     }
 }

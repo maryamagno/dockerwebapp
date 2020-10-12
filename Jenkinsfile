@@ -33,6 +33,9 @@ node {
             script {
                def data = readFile(file: 'version.yml')
                println(data)
+                
+               def data = "1.0.2-abcdefg"
+               writeFile(file: 'version.yml', text: data)
             }
         }
     }

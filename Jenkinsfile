@@ -37,10 +37,11 @@ node {
                def versionInYml = readFile(file: 'version.yml')
                println(versionInYml)                               
             }
-                      
-            bat "git add version.yml"
-            bat "git commit -m 'changed version via jenkins pipeline'"
-            bat "git push origin main"
+            
+            git add version.yml
+            git commit -m 'changed version via jenkins pipeline'
+            git push origin main
+            
         }
     }
 }

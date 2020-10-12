@@ -37,25 +37,9 @@ node {
         }         
     }
     
-    stage('Push Version Back to Git') {
-        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'marya-github-id', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-            bat 'git config --global user.email "maryamagno@gmail.com"'
-            bat 'git config --global user.name "Marya"'
-            bat('git push https://github.com/****/module2.git HEAD:main')
-        }
-    }
-    
-    stage ('Update'){
-        dir("Module2-test"){
-             withCredentials([string(credentialsId: 'marya-github-id')]) {
-                   // Configure the user
-                   sh 'git config user.email "maryamagno@gmail.com"'
-                   sh 'git config user.name "Marya Magno"'
-                   sh "git remote rm origin"
-                   sh "git remote add origin https://github.com/maryamagno/module2.git"                     
-                   sh "git commit -am 'Commit message'"
-                   sh 'git push origin HEAD:main'
-                }                
-        }
-    }
+    stage('Push Version Back to Git') {        
+        bat 'git config --global user.email "maryamagno@gmail.com"'
+        bat 'git config --global user.name "Marya"'
+        bat('git push git@github.com:maryamagno/module2.git HEAD:main')       
+    }    
 }
